@@ -131,6 +131,24 @@ int main(int argc, char *argv[])
             system(sshCommand);
             system("rm -r");
         }
+        else if (strcmp(command, "useradd") == 0)
+        { // verifica se o comando é criar usuário
+            printf("Digite o nome do usuário: ");
+            fgets(command, sizeof(command), stdin); // lê o nome do usuário
+            command[strcspn(command, "\n")] = '\0'; // remove a quebra de linha
+
+            char createUserCommand[COMMAND_SIZE + strlen(command)];
+            snprintf(createUserCommand, sizeof(createUserCommand), "ssh %s sudo useradd %s", otherNode, command);
+            system(createUserCommand);
+
+            // printf("Digite a senha do usuário: ");
+            // fgets(command, sizeof(command), stdin); // lê a senha do usuário
+            // command[strcspn(command, "\n")] = '\0'; // remove a quebra de linha
+
+            // char passwdCommand[COMMAND_SIZE + strlen(command)];
+            // snprintf(passwdCommand, sizeof(passwdCommand), "ssh %s passwd %s", otherNode, command);
+            // system(passwdCommand);
+        }
         // else if (strcmp(command, "createuser") == 0)
         // { // verifica se o comando é createuser
         //     char username[COMMAND_SIZE];
