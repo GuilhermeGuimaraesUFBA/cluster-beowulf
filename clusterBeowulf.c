@@ -141,6 +141,7 @@ int main(int argc, char *argv[])
             snprintf(createUserCommand, sizeof(createUserCommand), "ssh %s sudo useradd %s", otherNode, command);
             system(createUserCommand);
 
+    //criação de senha para o ususario (ainda sem funcionar)        
             // printf("Digite a senha do usuário: ");
             // fgets(command, sizeof(command), stdin); // lê a senha do usuário
             // command[strcspn(command, "\n")] = '\0'; // remove a quebra de linha
